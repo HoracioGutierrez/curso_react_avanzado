@@ -1,0 +1,65 @@
+LINKS
+
+https://marketplace.visualstudio.com/items?itemName=patbenatar.advanced-new-file
+https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?utm_source=chrome-ntp-icon
+
+/src
+    |_api/
+        |_store.js
+        |_reducer.js
+        |_actions.js
+    |_ui/
+        |_layout/
+            |_App.js
+            |_Header.js
+            |_Footer.js
+            |_Main.js
+        |_componentes/
+            |_Usuarios.js
+            |_ListadoUsuarios.js
+            |_FormularioUsuarios.js
+        |_paginas/
+
+
+Los componentes siempre son funciones con retorno en mayuscula
+
+function App(){ return }
+
+let App = function(){ return }
+
+let App = () => { return  }
+
+
+class App extends Component {
+
+    render(){
+        return
+    }
+}
+
+
+
+REDUX y REACT-REDUX : Redux es la libreria que controla el patron de diseño pub-sub y react-redux es la implementacion de redux en una app de react
+
+
+IMPLEMENTACION DE REDUX : Necesitamos crear un store,un reducer y actions
+
+
+IMPLEMENTACION DE REACT-REDUX : Necesitamos un Provider (HOC) que nos sirve para envolver a todo un arbol de React en redux y a partir de ahi podemos conectar los componentes de manera individual
+
+
+CONEXION DE COMPONENTE CON REDUX : 
+
+connect(a,b)(Componente) : La funcion connect nos sirve para envolver un componente de React y pasarle props adicionales (Ademas de los que ya le podrian estar llegando). Toma dos parametros y ambos dos son funciones
+
+a : nos sirve para leer propiedades del store. Recibe un UNICO parametro y es una copia del store.
+
+b : nos sirve para despachar acciones. Recibe un UNICO parametro y es una copia de la funcion dispatch. 
+
+
+
+
+
+
+
