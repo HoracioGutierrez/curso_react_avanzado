@@ -1,13 +1,14 @@
 import React from 'react'
+import {NavLink} from "react-router-dom"
 
 const Header = () => {
     return (
         <header>
-            <h1>React Avanzado</h1>
+            <NavLink exact to="/">
+                <h1>React Avanzado</h1>
+            </NavLink>
             <nav>
-                <a href="#">link</a>
-                <a href="#">link</a>
-                <a href="#">link</a>
+                <NavLink to="/signup">signup</NavLink>
             </nav>
         </header>
     )
