@@ -6,10 +6,15 @@ const Signup = ({login,form,toggleFormulario,handleLogin,handleSignup,change}) =
 
     function handleSubmit(e){
         e.preventDefault()
+        
+        let usuario = e.target.elements.usuario.value
+        let password = e.target.elements.password.value
+        
         if(login){
-            handleLogin(e.target.elements.usuario.value,e.target.elements.password.value)
+            handleLogin(usuario,password)
         }else{
-            handleSignup()
+            let email = e.target.elements.email.value
+            handleSignup(usuario,email,password)
         }
     }
 
@@ -34,8 +39,8 @@ const Signup = ({login,form,toggleFormulario,handleLogin,handleSignup,change}) =
                 <div>
                     <input onChange={handleChange} type="password" name="password" placeholder="Contraseña" name="password" value={form.password}/>
                 </div>
-                <button>{login?"Ingresar":"Crear"}</button>
-                <button onClick={toggleFormulario}>Ya tengo cuenta</button>
+                <button type="submit">{login?"Ingresar":"Crear"}</button>
+                <button type="button" onClick={toggleFormulario}>Ya tengo cuenta</button>
             </form>   
         </>
     )

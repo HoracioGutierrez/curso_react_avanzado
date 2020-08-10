@@ -11,24 +11,63 @@ export let editarUsuario = () => {}
 export let toggleFormulario = () => ({type:"FORMULARIO_TOGGLE"}) 
 
 
-export let handleLogin = () => {
+
+export let handleLogin = (usuario,password) => {
     //Hacer un pedido al servidor
+
+    //Thunk
     return function(dispatch){
+
+        dispatch({ type : "FORMULARIO_LOGIN_REQUEST" })
+
+
         fetch("/api/login",{
             method : "POST",
             headers : { "content-type": "application/json"},
-            body : JSON.stringify()
+            body : JSON.stringify({usuario,password})
         })
-        .then(res=>res.json())
         .then(res=>{
-            dispatch({ type : "FORMULARIO_LOGIN_SUCCESS" })
+            if(res.status == 200){
+                res.json()
+            }else{
+                dispatch({ type : "FORMULARIO_LOGIN_ERROR" , payload : res.status })    
+            }
+        })
+        .then(res=>{
+            dispatch({ type : "FORMULARIO_LOGIN_SUCCESS" , payload : res })
         })
         .catch(error=>{
-            dispatch({ type : "FORMULARIO_LOGIN_ERROR" })
+            dispatch({ type : "FORMULARIO_LOGIN_ERROR" , payload : error })
         })
     }
 }
 
-export let handleSignup = () => ({ type : "FORMULARIO_SIGNUP" })
+
+export let handleSignup = (usuario,email,password) => {
+
+    return function(dispatch){
+
+        dispatch({ type : "FORMULARIO_SIGNUP_REQUEST" })
+
+        fetch("/api/signup",{
+            method : "POST",
+            headers : { "content-type": "application/json"},
+            body : JSON.stringify({usuario,email,password})
+        })
+        .then(res=>{
+            if(res.status == 200){
+                res.json()
+            }else{
+                dispatch({ type : "FORMULARIO_SIGNUP_ERROR" , payload : res.status })    
+            }
+        })
+        .then(res=>{
+            dispatch({ type : "FORMULARIO_SIGNUP_SUCCESS" , payload : res })
+        })
+        .catch(error=>{
+            dispatch({ type : "FORMULARIO_SIGNUP_ERROR" , payload : error })
+        })
+    }
+}
 
 export let change = (name,value) => ({ type : "FORMULARIO_CAMBIAR" , name , value })

@@ -3,6 +3,12 @@ LINKS
 https://marketplace.visualstudio.com/items?itemName=patbenatar.advanced-new-file
 https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
 https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?utm_source=chrome-ntp-icon
+https://github.com/goncy/firestore-beers-store
+
+https://www.meteor.com/
+https://www.npmjs.com/package/validator
+https://www.npmjs.com/package/bcrypt
+
 
 /src
     |_api/
@@ -63,3 +69,27 @@ b : nos sirve para despachar acciones. Recibe un UNICO parametro y es una copia 
 
 
 
+REDUX SAGA : La diferencia con redux thunk es que esta libreria usa funciones generadoras.
+
+GENERATOR FUNCTION : Es aquella que en primer instancia nos retorna un objeto que implementa la interfaz de Iterator y ademas pueden ser pausadas en cualquier momento y volver a resumirse con el mismo contexto
+
+function foo(){
+    return {
+        next(){
+            return {value:Any,done:Boolean}
+        }
+    }
+}
+
+let result = foo()
+let primer_next = result.next()
+
+console.log(primer_next.value,primer_next.done)
+
+
+function* miFuncionGeneradora(){
+    yield "hola"
+}
+
+let res = miFuncionGeneradora()
+res.next() {value:"Hola",done:false}
