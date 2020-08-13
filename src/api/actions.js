@@ -11,7 +11,7 @@ export let editarUsuario = () => {}
 export let toggleFormulario = () => ({type:"FORMULARIO_TOGGLE"}) 
 
 
-
+/* 
 export let handleLogin = (usuario,password) => {
     //Hacer un pedido al servidor
 
@@ -68,6 +68,14 @@ export let handleSignup = (usuario,email,password) => {
             dispatch({ type : "FORMULARIO_SIGNUP_ERROR" , payload : error })
         })
     }
+} */
+
+export let handleLogin = (usuario,password) => {
+    return {type:"USUARIO_LOGIN",usuario,password}
+}
+
+export let handleSignup = (usuario,email,password) => {
+    return {type:"USUARIO_SIGNUP",usuario,email,password}
 }
 
 export let change = (name,value) => ({ type : "FORMULARIO_CAMBIAR" , name , value })

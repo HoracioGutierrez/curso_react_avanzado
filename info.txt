@@ -170,3 +170,72 @@ SAGA ENRUTADOR (ROOT) = Es una funcion generadora que se encargaria de activar e
 SAGA WATCHER = Es una funcion generadora que se encargaria de estar esperando a que nosotros despachemos un tipo de accion
 
 SAGA WORKERS = Es una funcion generadora que se encargaria de hacer los side effects
+
+
+
+
+
+
+OOP  
+
+https://www.youtube.com/c/cod3a/videos
+https://www.youtube.com/watch?v=PMfcsYzj-9M&t=1396s
+https://www.youtube.com/watch?v=pKJG6u2kuFw&t=2093s
+https://www.youtube.com/watch?v=Yvf_kUBZmXg&t=1060s
+https://github.com/HoracioGutierrez/jsinheritance/blob/master/translations/README.es.md
+
+
+CONTEXTO = Es la variable this y hace referencia(por defecto) al objeto que contiene a la misma funcion
+
+natural - call - apply - bind - new 
+
+
+let obj = {
+    x : 1,
+    fn : function(){
+        console.log(this)
+        setTimeout(function(){
+            console.log(this)
+        })
+    }
+}
+
+obj.fn()
+
+
+
+window.foo = function(){}
+var foo = function(){}
+
+function foo(a,b){
+    console.log(a,b)
+    console.log(this)
+}
+
+
+Natural
+foo(1,2)
+
+foo.call("Call",1,2)
+
+foo.apply("Apply",[1,2])
+
+new foo(1,2)
+
+foo.bind("Bind",1,2)
+
+
+
+
+
+
+
+
+
+function Persona(){
+    //let this = {}
+    this.nombre = "Horacio"
+    //return this
+}
+
+new Persona()
