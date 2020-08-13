@@ -73,6 +73,7 @@ REDUX SAGA : La diferencia con redux thunk es que esta libreria usa funciones ge
 
 GENERATOR FUNCTION : Es aquella que en primer instancia nos retorna un objeto que implementa la interfaz de Iterator y ademas pueden ser pausadas en cualquier momento y volver a resumirse con el mismo contexto
 
+
 function foo(){
     return {
         next(){
@@ -80,6 +81,7 @@ function foo(){
         }
     }
 }
+
 
 let result = foo()
 let primer_next = result.next()
@@ -93,3 +95,78 @@ function* miFuncionGeneradora(){
 
 let res = miFuncionGeneradora()
 res.next() {value:"Hola",done:false}
+
+
+
+
+SYMBOL = Es un tipo de dato nuevo desde ES6 que nos sirve para crear nombres de propiedades en objetos las cuales nos asguran que van a ser siempre UNICAS
+
+
+let a = {}
+a.prop = 1
+
+let sym = Symbol()
+let s_1 = Symbol("horacio")
+let s_2 = Symbol("horacio")
+
+s_1 == s_2 //False
+
+
+let obj = {}
+obj[s_1] = true
+
+for(prop in obj){
+    console.log(prop) //No nos da nada
+}
+
+
+Object.getOwnPropertySymbols(obj)
+Reflect.ownKeys(obj)
+
+
+
+ITERABLE = Deberia presentar una propiedad en alguna parte de su prototipo descripta con Symbol.iterator y esta deberia ser una funcion que nos devuelve un objeto el cual implementa una funcion next.
+Cada vez que ejecutemos next nos tiene que retornar un objeto con dos propiedades : value y done
+
+let obj = {
+    iterar : function(){
+
+        let contador = 0
+
+        return {
+            next : function(){
+
+                return {
+                    value : contador++,
+                    done : false
+                }
+
+            }
+        }
+    }
+}
+
+
+
+
+GENERATORS
+
+function* iterar(){
+    let contador = 0
+    while(true){
+        yield contador++
+    }
+}
+
+
+iterar()
+
+
+
+
+
+SAGA ENRUTADOR (ROOT) = Es una funcion generadora que se encargaria de activar el resto de todos los saga
+
+SAGA WATCHER = Es una funcion generadora que se encargaria de estar esperando a que nosotros despachemos un tipo de accion
+
+SAGA WORKERS = Es una funcion generadora que se encargaria de hacer los side effects

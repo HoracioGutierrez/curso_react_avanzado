@@ -1,11 +1,15 @@
 import { createStore, applyMiddleware , compose } from "redux"
 import reducer from "./reducer"
-import thunk from "redux-thunk"
 
-//let store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+//Traer el export default de la libreria 
+import createSagaMiddleware from "redux-saga"
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//Crear el middleware de Saga
+let sagaMiddleware = createSagaMiddleware()
 
-let store = createStore(reducer,composeEnhancers(applyMiddleware(thunk)))
+//Usar ese middleware
+let store = createStore(reducer,applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run()
 
 export default store
