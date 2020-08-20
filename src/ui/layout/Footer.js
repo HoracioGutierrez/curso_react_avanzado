@@ -1,5 +1,5 @@
-import React , {useContext} from 'react'
-//import context , {Consumer} from "../../api/context"
+import React , {useContext,useEffect} from 'react'
+import context , {Consumer} from "../../api/context"
 
 /* class Footer extends React.Component {
 
@@ -20,27 +20,28 @@ import React , {useContext} from 'react'
 }
  */
 
-/* const Footer = () => {
+const Footer = () => {
 
     let contexto = useContext(context)
 
-    function cambiarX(){
-        contexto.x = "nuevo valor"
-    }
+    console.log(contexto.x)
+    useEffect(() => {
+        contexto.cambiarX()
+    }, [])
 
+    return (
+        <footer>
+            <p>&copy; Copyright 2020{contexto.x}</p>
+        </footer>
+    )
+} 
+
+/* const Footer = () => {
     return (
         <footer>
             <p>&copy; Copyright 2020</p>
         </footer>
     )
 } */
-
-const Footer = () => {
-    return (
-        <footer>
-            <p>&copy; Copyright 2020</p>
-        </footer>
-    )
-}
 
 export default Footer
