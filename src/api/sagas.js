@@ -1,4 +1,4 @@
-import {all,takeEvery,call,put} from "redux-saga/effects"
+import {all,takeEvery,call,put, takeLatest} from "redux-saga/effects"
 
 
 //WORKER
@@ -8,8 +8,7 @@ function* SignupSaga({usuario,email,password}){
 
         //yield call(()=>{ axios() })
 
-        let resultado = yield call(fetch,{
-            url:"/api/signup",
+        let resultado = yield call(fetch,"/api/signup",{
             method:"POST",
             headers : { "content-type": "application/json"},
             body : JSON.stringify({usuario,email,password})
@@ -28,11 +27,10 @@ function* SignupSaga({usuario,email,password}){
 function* LoginSaga({usuario,password}){
     try{
 
-        let resultado = yield call(fetch,{
-            url:"/api/login",
+        let resultado = yield call(fetch,"/api/login",{
             method:"POST",
             headers : { "content-type": "application/json"},
-            body : JSON.stringify({usuario,email,password})
+            body : JSON.stringify({usuario,password})
         })
 
         yield put({type:"FORMULARIO_LOGIN_SUCCESS",resultado})
@@ -47,12 +45,12 @@ function* LoginSaga({usuario,password}){
 //WATCHERS
 //Estos se ejcutan "inmediatamente" y quedan a la espera del patron/efecto que le digamos que tiene que escuchar y nos despacha un saga worker
 function* watcherSignupSaga(){
-    yield takeEvery("USUARIO_LOGIN",SignupSaga)
+    yield takeEvery("USUARIO_SIGNUP",SignupSaga)
 }
 
 
 function* watcherLoginSaga(){
-    yield takeEvery("USUARIO_SIGNUP",LoginSaga)
+    yield takeLatest("USUARIO_LOGIN",LoginSaga)
 }
 
 
