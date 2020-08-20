@@ -239,3 +239,12 @@ function Persona(){
 }
 
 new Persona()
+
+
+
+
+CONTEXT y HOOKS
+
+context : Sirve para mantener un estado en un "Provider" y poder consumirlo con un "Consumer" 
+
+createContext([init]) : Nos crea un objeto context que viene con dos componentes : Provider (que nos permite proveer el contexto) y Consumer (que nos permite consumir el contexto que nos habilito previamente el Provider). Si usara Consumer sin Provider voy a consumir el contexto inicial.
