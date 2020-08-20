@@ -1,8 +1,17 @@
-import React from 'react'
+import React , { useContext } from 'react'
 import { connect } from 'react-redux'
 import { toggleFormulario, handleLogin , handleSignup , change } from "../../api/actions"
+import context from "../../api/context"
 
-const Signup = ({login,form,toggleFormulario,handleLogin,handleSignup,change}) => {
+//const Signup = ({login,form,toggleFormulario,handleLogin,handleSignup,change}) => {
+
+const Signup = () => {
+
+    let contexto = useContext(context)
+
+    let {login,form} = contexto.state
+    let dispatch = contexto.dispatch
+    
 
     function handleSubmit(e){
         e.preventDefault()
@@ -21,7 +30,7 @@ const Signup = ({login,form,toggleFormulario,handleLogin,handleSignup,change}) =
     function handleChange(e){
         let name = e.target.name
         let value = e.target.value
-        change(name,value)
+        dispatch({ type : "FORMULARIO_CAMBIAR",name,value})
     }
 
     return (
@@ -48,7 +57,10 @@ const Signup = ({login,form,toggleFormulario,handleLogin,handleSignup,change}) =
 
 
 
-export default connect(
+/* export default connect(
     ({Signup:{login,form}}) => ({login,form}),
     {toggleFormulario,handleLogin,handleSignup,change}
 )(Signup)
+ */
+
+ export default Signup

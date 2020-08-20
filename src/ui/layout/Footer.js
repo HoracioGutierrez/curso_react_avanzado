@@ -1,5 +1,5 @@
 import React , {useContext,useEffect,useRef} from 'react'
-import context , {Consumer} from "../../api/context"
+//import context , {Consumer} from "../../api/context"
 
 /* class Footer extends React.Component {
 
@@ -20,7 +20,7 @@ import context , {Consumer} from "../../api/context"
 }
  */
 
-const Footer = () => {
+/* const Footer = () => {
 
     let contexto = useContext(context)
 
@@ -38,24 +38,24 @@ const Footer = () => {
     
     
     //componentDidMount
-    /* useEffect(() => {
+     useEffect(() => {
         contexto.cambiarX()
      },[])
-    */
+    
     return (
         <footer>
             <p>&copy; Copyright 2020{contexto.x}</p>
             <button onClick={contexto.cambiarX}>click</button>
         </footer>
     )
-} 
+}  */
 
-/* const Footer = () => {
+const Footer = () => {
     return (
         <footer>
             <p>&copy; Copyright 2020</p>
         </footer>
     )
-} */
+}
 
 export default Footer

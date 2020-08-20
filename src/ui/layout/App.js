@@ -3,8 +3,9 @@ import Header from './Header'
 import Footer from './Footer'
 import Main from './Main'
 import {Provider} from "../../api/context"
-
-
+import { useReducer } from 'react'
+import {reducer,initState} from "../../api/reducers/SignupReducerHook"
+/* 
 class App extends React.Component {
 
     constructor(){
@@ -17,9 +18,7 @@ class App extends React.Component {
         }
     }
 
-    /* cambiarX = () => {
-        this.setState({x:2})
-    } */
+   
 
     render(){
         return(
@@ -30,13 +29,16 @@ class App extends React.Component {
             </Provider>
         )
     }
-}
+} */
 
-/* 
+
 
 const App = () => {
+
+    const [state, dispatch] = useReducer(reducer,initState)
+
     return (
-        <Provider value={{x:1}}>
+        <Provider value={{state,dispatch}}>
             <Header/>
             <Main/>
             <Footer/>
@@ -44,6 +46,6 @@ const App = () => {
     )
 } 
 
-*/
+
 
 export default App
